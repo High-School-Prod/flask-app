@@ -1,0 +1,13 @@
+{% extends "login/base-login-page.html.j2" %}
+
+{% block title %}Login Page{% endblock %}
+{% block css_link %}static/styles/login-page.css{% endblock %}
+
+{% block body %}
+<p>Sign in to your account</p>
+    <input id="email" type="text" placeholder="Email"><br>
+    <input id="pass" type="text" placeholder="Password"><br>
+    <button onclick="process_login()">
+        Proceed
+    </button><br>
+{% endblock body %}
