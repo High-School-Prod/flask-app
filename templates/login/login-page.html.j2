@@ -5,9 +5,23 @@
 
 {% block body %}
 <p>Sign in to your account</p>
-    <input id="email" type="text" placeholder="Email"><br>
-    <input id="pass" type="text" placeholder="Password"><br>
-    <button onclick="process_login()">
-        Proceed
-    </button><br>
+
+<form id="login_form" @submit="validate">
+
+    <label for="email">Email</label>
+    <input id="email" v-model="email" type="text" name="email"><br/>
+
+    <label for="pass">Password</label>
+    <input id="pass" v-model="pass" type="text" name="pass"><br/>
+
+    <input type="submit" value="Submit">
+
+  <p v-if="errors.length">
+    <ul>
+      <li v-for="error in errors">[[ error ]]</li>
+    </ul>
+  </p>
+
+</form>
+
 {% endblock body %}
