@@ -43,7 +43,7 @@ def register_page():
 @app.route('/home')
 def homepage():
     res = make_response(render_template('homepage.html'))
-    res.set_cookie('logged', 'yes')
+    res.set_cookie('logged', 'yes!')
     return res
 
 
