@@ -1,0 +1,27 @@
+{% extends "login/base-login-page.html.j2" %}
+
+{% block title %}Login Page{% endblock %}
+{% block css_link %}static/styles/login-page.css{% endblock %}
+
+{% block body %}
+<p>Sign in to your account</p>
+
+<form id="login_form" @submit="validate">
+
+    <label for="email">Email</label>
+    <input id="email" v-model="email" type="text" name="email"><br/>
+
+    <label for="pass">Password</label>
+    <input id="pass" v-model="pass" type="text" name="pass"><br/>
+
+    <input type="submit" value="Submit">
+
+  <p v-if="errors.length">
+    <ul>
+      <li v-for="error in errors">[[ error ]]</li>
+    </ul>
+  </p>
+
+</form>
+
+{% endblock body %}
