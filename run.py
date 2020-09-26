@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, make_response, redirect, url_for
 from utils.hash_utils import get_8_digit_hash
 
 app = Flask(__name__)
@@ -6,6 +6,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def landing_page():
+    if request.cookies.get('logged'):
+        log = request.cookies.get('logged')
+        return redirect(url_for('homepage'))
     return render_template('index.html')
 
 
@@ -21,6 +24,9 @@ def privacy_policy():
 
 @app.route('/login')
 def login_page():
+    if request.cookies.get('logged'):
+        log = request.cookies.get('logged')
+        return redirect(url_for('homepage'))
     return render_template('login/login-page.html.j2')
 
 
@@ -36,7 +42,9 @@ def register_page():
 
 @app.route('/home')
 def homepage():
-    return render_template('homepage.html')
+    res = make_response(render_template('homepage.html'))
+    res.set_cookie('logged', 'yes')
+    return res
 
 
 @app.route('/dashboard/<int:dashboard_id>')
