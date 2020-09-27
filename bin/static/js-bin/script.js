@@ -1,3 +1,6 @@
+var API_BASE_URL = 'http://127.0.0.1:8000';
+
+
 window.onload = function () {
     const app = new Vue({
         el: '#login_form',
@@ -36,24 +39,21 @@ function process_login(email, pass) {
     try {
         var xhttp = new XMLHttpRequest();
 
-        var login_url = new URL('http://127.0.0.1:8000/user/login')
-        login_url.searchParams.set('username', email);
-        login_url.searchParams.set('password', pass);
-
-        xhttp.open('POST', login_url, true);
-        xhttp.withCredentials = true;
-        xhttp.send();
+        xhttp.open('POST', API_BASE_URL + '/user/login', true);
+        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        var user = new Object({'username':email, 'password':pass});
+        xhttp.send(JSON.stringify(user));
         xhttp.onreadystatechange = function () {
             if (is_ready(this)) {
                 var resp = JSON.parse(this.responseText);
-                if (resp.error != null)
+                if (resp.error)
                     switch (resp.error) {
                         case 'No args': console.log('No args');
                         case 'No user': console.log('No user');
                     }
-                if (resp.token != null) {
+                if (resp.ok) {
+                    document.cookie = 'session=' + resp.data.token;
                     location.replace('home');
-                    console.log(resp.token);
                 }
             }
         }
@@ -66,4 +66,25 @@ function process_login(email, pass) {
 
 function is_ready(xhr) {
     return xhr.readyState == 4 && xhr.status == 200
+}
+
+function logout() {
+    document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    location.replace('');
+
+    // var xhttp = new XMLHttpRequest();
+    // xhttp.open('POST', API_BASE_URL + '/user/logout', true);
+    // var session = document.cookie.replace(/(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    // xhttp.setRequestHeader('Authorization', session);
+    // alert(session);
+    // xhttp.send();
+
+    // var resp = JSON.parse(this.responseText);
+    // if (resp.ok) 
+    
+    return false;
+}
+
+function setCookieHeader(xhr) {
+    
 }

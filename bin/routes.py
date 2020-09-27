@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template
-from __init__ import create_app
 
 
 main = Blueprint('main', __name__)
@@ -37,6 +36,12 @@ def register_page():
 
 @main.route('/home')
 def homepage():
+    return render_template('homepage.html')
+
+
+@main.route('/home/logout', methods=['POST'])
+def logout():
+    
     return render_template('homepage.html')
 
 

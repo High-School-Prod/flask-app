@@ -7,3 +7,7 @@ def create_app():
 	from bin.routes import main
 	app.register_blueprint(main)
 	return app
+
+
+
+
