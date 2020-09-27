@@ -31,17 +31,11 @@ def fake_api():
 
 @main.route('/register')
 def register_page():
-    return render_template('login/register-page.html')
+    return render_template('login/register-page.html.j2')
 
 
 @main.route('/home')
 def homepage():
-    return render_template('homepage.html')
-
-
-@main.route('/home/logout', methods=['POST'])
-def logout():
-    
     return render_template('homepage.html')
 
 

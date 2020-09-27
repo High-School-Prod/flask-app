@@ -1,0 +1,20 @@
+{% extends "login/base-login-page.html.j2" %}
+{% block title %}Register Page{% endblock %}
+{% block css_link %}static/styles/register-page.css{% endblock %}
+
+{% block body %}
+<p>Create your new Account</p>
+
+<form id="register_form" @submit="validate">
+    <input id="email" v-model="email" type="text" placeholder="Email"><br>
+    <input id="name" v-model="name" type="text" placeholder="Name"><br>
+    <input id="pass" v-model="pass" type="text" placeholder="Password"><br>
+    <input type="submit" value="Submit"><br/>
+    <p v-if="errors.length">
+        <ul>
+            <li v-for="error in errors">[[ error ]]</li>
+        </ul>
+    </p>
+</form>
+
+{% endblock %}

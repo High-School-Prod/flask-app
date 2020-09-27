@@ -1,0 +1,33 @@
+[33mcommit 24a54b98faa2e970d039463860655cc0d1203dc8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Nazar Kalinichenko <nazarchik1701@gmail.com>
+Date:   Sun Sep 27 18:14:24 2020 +0300
+
+    refactored API integration
+
+[33mcommit 25b41f37538cdc82073bc3f7621d0006ab10eb5b[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: NazarNintendo <63342809+NazarNintendo@users.noreply.github.com>
+Date:   Sun Sep 27 01:08:18 2020 +0300
+
+    refactored to match flask-app genuine structure (#2)
+    
+    * refactored to match flask-app genuine structure
+    
+    * added new files
+
+[33mcommit 2cf6e1f0d8e3499a5e152c564b309865d187acf7[m
+Author: NazarNintendo <63342809+NazarNintendo@users.noreply.github.com>
+Date:   Fri Sep 25 23:57:11 2020 +0300
+
+    iplemented basic Vue, added validation for login button (#1)
+
+[33mcommit 82f9c67f357445e95dd8cee940507fbd8b8cbf79[m
+Author: NazarNintendo <63342809+NazarNintendo@users.noreply.github.com>
+Date:   Thu Sep 24 21:11:14 2020 +0300
+
+    Create README.md
+
+[33mcommit 8c3848561610e0142d03be869012476298e0c112[m
+Author: Nazar Kalinichenko <nazarchik1701@gmail.com>
+Date:   Thu Sep 24 21:10:14 2020 +0300
+
+    Initial commit
